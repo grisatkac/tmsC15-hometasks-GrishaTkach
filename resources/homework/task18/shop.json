@@ -1,0 +1,47 @@
+{
+  "devices" : [ {
+    "typeClass" : "by.tms.homework.lesson18.domain.devices.Mouse",
+    "id" : "hj76k",
+    "name" : "logitech",
+    "origin" : "Switzerland",
+    "price" : 50.0,
+    "type" : {
+      "energyConsumption" : 5,
+      "haveCooler" : false,
+      "peripheral" : true
+    },
+    "critical" : true,
+    "wireless" : false
+  }, {
+    "typeClass" : "by.tms.homework.lesson18.domain.devices.Monitor",
+    "diagonal" : 23.8,
+    "id" : "1100nb",
+    "name" : "LG",
+    "origin" : "Germany",
+    "price" : 300.0,
+    "type" : {
+      "energyConsumption" : 40,
+      "haveCooler" : false,
+      "peripheral" : true
+    },
+    "critical" : true
+  }, {
+    "typeClass" : "by.tms.homework.lesson18.domain.devices.Keyboard",
+    "id" : "xcmh123",
+    "name" : "logitech",
+    "origin" : "switzerland",
+    "price" : 85.9,
+    "type" : {
+      "energyConsumption" : 15,
+      "haveCooler" : false,
+      "peripheral" : true
+    },
+    "critical" : true,
+    "mechanical" : false
+  } ],
+  "shopAddress" : {
+    "country" : "Belarus",
+    "city" : "Minsk",
+    "phoneNumber" : "+375297777777"
+  }
+}

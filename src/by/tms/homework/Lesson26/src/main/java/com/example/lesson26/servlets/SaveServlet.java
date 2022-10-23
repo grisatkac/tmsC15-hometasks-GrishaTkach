@@ -2,7 +2,6 @@ package com.example.lesson26.servlets;
 
 import com.example.lesson26.pojo.Identity;
 import com.example.lesson26.pojo.Item;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -50,5 +48,4 @@ public class SaveServlet extends HttpServlet {
         formValues.add(request.getParameter("price"));
         return formValues.contains("");
     }
-
 }

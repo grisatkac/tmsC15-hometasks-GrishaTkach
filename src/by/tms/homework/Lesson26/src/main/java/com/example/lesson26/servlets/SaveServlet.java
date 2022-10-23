@@ -26,18 +26,7 @@ public class SaveServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Map<String, String[]> formParameters = new HashMap<>(request.getParameterMap());
-
-        boolean isEmptyFields = formParameters.entrySet()
-                .stream()
-                .anyMatch(field -> {
-                    for (String value : field.getValue()) {
-                        if (value.length() == 0) {
-                            return true;
-                        }
-                    }
-                    return false;
-                });
+        boolean isEmptyFields = checkIfTheFieldsIsEmpty(request);
 
         if (isEmptyFields) {
             response.sendRedirect("/save");
@@ -52,6 +41,14 @@ public class SaveServlet extends HttpServlet {
             allData.put(item.getId(), item);
             request.getRequestDispatcher("Data.jsp").forward(request, response);
         }
+    }
+
+    public static boolean checkIfTheFieldsIsEmpty(HttpServletRequest request) {
+        List<String> formValues = new ArrayList<>();
+        formValues.add(request.getParameter("name"));
+        formValues.add(request.getParameter("amount"));
+        formValues.add(request.getParameter("price"));
+        return formValues.contains("");
     }
 
 }

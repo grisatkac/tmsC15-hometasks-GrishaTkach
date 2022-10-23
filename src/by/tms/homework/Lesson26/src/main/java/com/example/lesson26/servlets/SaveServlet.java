@@ -1,5 +1,8 @@
 package com.example.lesson26.servlets;
 
+import com.example.lesson26.pojo.Identity;
+import com.example.lesson26.pojo.Item;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,8 +42,14 @@ public class SaveServlet extends HttpServlet {
         if (isEmptyFields) {
             response.sendRedirect("/save");
         } else {
-            List<Map<String, String[]>> allData = (ArrayList<Map<String, String[]>>) request.getSession().getAttribute("allData");
-            allData.add(formParameters);
+            Map<Identity, Item> allData = (Map<Identity, Item>) request.getSession().getAttribute("allData");
+            Item item = new Item(
+                    request.getParameter("name"),
+                    Integer.parseInt(request.getParameter("amount")),
+                    Integer.parseInt(request.getParameter("price"))
+            );
+
+            allData.put(item.getId(), item);
             request.getRequestDispatcher("Data.jsp").forward(request, response);
         }
     }

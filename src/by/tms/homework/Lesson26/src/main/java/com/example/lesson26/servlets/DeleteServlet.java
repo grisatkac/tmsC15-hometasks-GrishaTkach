@@ -1,14 +1,14 @@
 package com.example.lesson26.servlets;
 
+import com.example.lesson26.pojo.Identity;
+import com.example.lesson26.pojo.Item;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -23,18 +23,15 @@ public class DeleteServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getParameter("field") == null || request.getParameter("value").isEmpty()) {
+        if (request.getParameter("id-field").isEmpty()) {
             response.sendRedirect("/delete");
         } else {
-            String field = request.getParameter("field");
-            String value = request.getParameter("value");
-            List<Map<String, String[]>> allData = (ArrayList<Map<String, String[]>>) request.getSession().getAttribute("allData");
+            long id = Long.parseLong(request.getParameter("id-field"));
+            Map<Identity, Item> allData = (Map<Identity, Item>) request.getSession().getAttribute("allData");
 
-            List<Map<String, String[]>> allDataAfterDeleting = allData.stream()
-                    .filter(data -> data.entrySet().stream()
-                            .anyMatch(dataField -> dataField.getKey().equals(field)
-                                    && Arrays.stream(dataField.getValue()).anyMatch(val -> !(val.equals(value)))))
-                    .collect(Collectors.toList());
+            Map<Identity, Item> allDataAfterDeleting = allData.entrySet().stream()
+                    .filter(item -> item.getKey().getId() != id)
+                    .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
             request.getSession().setAttribute("allData", allDataAfterDeleting);
             response.sendRedirect("/list");

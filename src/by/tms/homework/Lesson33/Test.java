@@ -2,14 +2,14 @@ package by.tms.homework.Lesson33;
 
 import by.tms.homework.Lesson33.pojo.CLONE_TYPE;
 import by.tms.homework.Lesson33.pojo.User;
-import by.tms.homework.Lesson33.utils.UserUtils;
+import by.tms.homework.Lesson33.pojo.UserList;
 
 public class Test {
 
     public static void main(String[] args) throws CloneNotSupportedException {
-        User firstUser = UserUtils.createUser("Greg", "Greg", 25, 777);
-        User secondUser = UserUtils.createUser("Ivan", "Ivanov", 25, 777);
-        User thirdUser = UserUtils.createUser("Greg", "Greg", 25, 777);
+        User firstUser = UserList.addUser("Greg", "Greg", 25, 777);
+        User secondUser = UserList.addUser("Ivan", "Ivanov", 25, 777);
+        User thirdUser = UserList.addUser("Greg", "Greg", 25, 777);
         System.out.println("Before deep copy: ");
         System.out.println(firstUser);
 

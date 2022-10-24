@@ -1,7 +1,5 @@
 package by.tms.homework.Lesson33.pojo;
 
-import by.tms.homework.Lesson33.utils.UserUtils;
-
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Optional;
@@ -62,7 +60,7 @@ public class User extends Identity implements Serializable, Cloneable {
             return new User();
         }
 
-        Optional<User> foundUser = UserUtils.usersList.stream()
+        Optional<User> foundUser = UserList.usersList.stream()
                 .filter(user -> user.getId() == userId)
                 .findFirst();
 

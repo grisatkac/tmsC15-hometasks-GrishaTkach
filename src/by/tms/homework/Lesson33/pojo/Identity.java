@@ -15,6 +15,10 @@ public class Identity implements Cloneable, Serializable {
         this.id = IdentityUtil.generateUserId();
     }
 
+    public Identity(long id) {
+        this.id = id;
+    }
+
     public long getId() {
         return id;
     }

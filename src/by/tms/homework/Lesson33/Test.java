@@ -13,7 +13,7 @@ public class Test {
         System.out.println("Before deep copy: ");
         System.out.println(firstUser);
 
-        User fourthUser = User.cloneUser(CLONE_TYPE.DEEP.toString(), firstUser.getId());
+        User fourthUser = User.cloneUser(CLONE_TYPE.DEEP.toString(), firstUser.getId().getId());
         firstUser.setId(5L);
 
         System.out.println("After copy: ");

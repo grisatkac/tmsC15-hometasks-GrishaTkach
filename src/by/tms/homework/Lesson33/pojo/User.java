@@ -2,12 +2,14 @@ package by.tms.homework.Lesson33.pojo;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.Optional;
 
-public class User extends Identity implements Serializable, Cloneable {
+public class User implements Serializable, Cloneable {
 
     @Serial
     private static final long serialVersionUID = -5578520619180516238L;
+    private Identity id;
     private String firstName;
     private String lastName;
     private int age;
@@ -16,11 +18,19 @@ public class User extends Identity implements Serializable, Cloneable {
     public User() {}
 
     public User(String firstName, String lastName, int age, int number) {
-        super();
+        this.id = new Identity();
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.number = number;
+    }
+
+    public Identity getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = new Identity(id);
     }
 
     public String getFirstName() {
@@ -61,7 +71,7 @@ public class User extends Identity implements Serializable, Cloneable {
         }
 
         Optional<User> foundUser = UserList.usersList.stream()
-                .filter(user -> user.getId() == userId)
+                .filter(user -> user.getId().getId() == userId)
                 .findFirst();
 
         User newCopiedUser = new User();
@@ -91,7 +101,7 @@ public class User extends Identity implements Serializable, Cloneable {
                 getAge(),
                 getNumber()
         );
-        clonedUser.setId(getId());
+        clonedUser.id = (Identity) id.clone();
         return clonedUser;
     }
 
@@ -106,7 +116,7 @@ public class User extends Identity implements Serializable, Cloneable {
         }
 
         User user = (User)object;
-        return  super.equals(user.getId())
+        return  this.id.equals(user.id)
                 && this.firstName.equals(user.firstName)
                 && this.lastName.equals(user.lastName)
                 && this.age == user.age
@@ -115,19 +125,18 @@ public class User extends Identity implements Serializable, Cloneable {
 
     @Override
     public int hashCode() {
-        int result = firstName.hashCode() + lastName.hashCode() + Integer.hashCode(age) + Integer.hashCode(number);
-        return 31 * result + super.hashCode();
+        return Objects.hash(id, firstName, lastName, age, number);
     }
 
     @Override
     public String toString() {
         return new StringBuilder()
                 .append(String.format("Class: %s \n", getClass().getSimpleName()))
+                .append(String.format("User id: %s \n", id))
                 .append(String.format("First name: %s \n", firstName))
                 .append(String.format("Last name: %s \n", lastName))
                 .append(String.format("Age: %s \n", age))
                 .append(String.format("Contact number: %s \n", number))
-                .append(super.toString())
                 .toString();
     }
 }

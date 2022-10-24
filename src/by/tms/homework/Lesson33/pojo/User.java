@@ -68,11 +68,11 @@ public class User extends Identity implements Serializable, Cloneable {
 
         User newCopiedUser = new User();
         if (foundUser.isPresent()) {
-            if (UserUtils.CLONE_TYPE.DEEP.toString().equals(cloneType)) {
+            if (CLONE_TYPE.DEEP.toString().equals(cloneType)) {
                 newCopiedUser = foundUser.get().deepClone();
             }
 
-            if (UserUtils.CLONE_TYPE.USUAL.toString().equals(cloneType)) {
+            if (CLONE_TYPE.USUAL.toString().equals(cloneType)) {
                 newCopiedUser = foundUser.get().clone();
             }
             return newCopiedUser;

@@ -7,16 +7,6 @@ import java.util.List;
 
 public class UserUtils {
 
-    public enum CLONE_TYPE {
-        DEEP("DEEP"),
-        USUAL("USUAL");
-
-        private final String value;
-
-        CLONE_TYPE(String value) {
-            this.value = value;
-        }
-    }
     private  UserUtils () {}
     public static List<User> usersList = new ArrayList<>();
 

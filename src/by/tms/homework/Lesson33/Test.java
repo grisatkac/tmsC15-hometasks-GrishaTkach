@@ -1,5 +1,6 @@
 package by.tms.homework.Lesson33;
 
+import by.tms.homework.Lesson33.pojo.CLONE_TYPE;
 import by.tms.homework.Lesson33.pojo.User;
 import by.tms.homework.Lesson33.utils.UserUtils;
 
@@ -12,7 +13,7 @@ public class Test {
         System.out.println("Before deep copy: ");
         System.out.println(firstUser);
 
-        User fourthUser = User.cloneUser(UserUtils.CLONE_TYPE.DEEP.toString(), firstUser.getId());
+        User fourthUser = User.cloneUser(CLONE_TYPE.DEEP.toString(), firstUser.getId());
         firstUser.setId(5L);
 
         System.out.println("After copy: ");

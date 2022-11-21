@@ -33,13 +33,6 @@ public class TicketRepositoryImpl implements Serializable, TicketRepository {
 
     @Override
     public Ticket find(long id) {
-
-        boolean isValidId = checkValidId(id);
-
-        if (!isValidId) {
-            return null;
-        }
-
         Optional<Map.Entry<Long, Ticket>> foundCandidateTicket = TICKET_REPOSITORY.entrySet().stream()
                 .filter(ticket -> ticket.getKey() == id)
                 .findFirst();
@@ -55,50 +48,23 @@ public class TicketRepositoryImpl implements Serializable, TicketRepository {
     }
 
     @Override
-    public boolean update(Ticket ticket, long id) {
-        boolean resultOfUpdating = false;
-        boolean isValidId = checkValidId(id);
-
-        if (ticket == null) {
-            LogUtil.printInfo("Ticket object is null");
-            return resultOfUpdating;
-        }
-
-        if (!isValidId) {
-            return resultOfUpdating;
-        }
-
-        ticket.setId(id);
-        TICKET_REPOSITORY.put(id, ticket);
-        TicketIdentityUtil.decrementId();
+    public boolean update(Ticket ticket) {
+        boolean resultOfUpdating;
+        TICKET_REPOSITORY.put(ticket.getId(), ticket);
         resultOfUpdating = true;
         LogUtil.printInfo("The result of updating ticket in repository is: " + resultOfUpdating);
-
         return resultOfUpdating;
     }
 
     @Override
     public boolean delete(long id) {
-        boolean isValidId = checkValidId(id);
         boolean resultOfDeleting = false;
-
-        if (!isValidId) {
-            return resultOfDeleting;
-        }
-
         resultOfDeleting = TICKET_REPOSITORY.values().removeIf(ticket -> ticket.getId() == id);
+        resultOfDeleting = true;
         LogUtil.printInfo("The result of deleting ticket from repository is: " + resultOfDeleting);
         return resultOfDeleting;
     }
 
-    private boolean checkValidId(long id) {
-        if (id < 1 || id > TICKET_REPOSITORY.size()) {
-            LogUtil.printInfo("Incorrect user id: " + id);
-            return false;
-        }
-
-        return true;
-    }
 
     @Override
     public void generateEntitiesForRepository() {

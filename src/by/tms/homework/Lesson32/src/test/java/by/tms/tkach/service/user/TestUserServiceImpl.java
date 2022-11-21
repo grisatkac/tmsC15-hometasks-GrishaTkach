@@ -48,7 +48,7 @@ public class TestUserServiceImpl {
                         user.getEmail(),
                         user.getLogin(),
                         user.getPassword(),
-                        user.canDoWork(),
+                        user.isCanDoJob(),
                         true
                 ),
                 Arguments.of(
@@ -57,7 +57,7 @@ public class TestUserServiceImpl {
                         user.getEmail(),
                         user.getLogin(),
                         null,
-                        user.canDoWork(),
+                        user.isCanDoJob(),
                         false
                 ),
                 Arguments.of(
@@ -66,7 +66,7 @@ public class TestUserServiceImpl {
                         null,
                         "",
                         user.getPassword(),
-                        user.canDoWork(),
+                        user.isCanDoJob(),
                         false
                 )
         );

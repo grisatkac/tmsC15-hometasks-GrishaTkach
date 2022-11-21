@@ -42,6 +42,11 @@ public class TicketServiceImpl implements TicketService {
 
     @Override
     public Ticket getById(long id) {
+        if (!checkValidId(id)) {
+            LogUtil.printInfo("Invalid id");
+            return null;
+        }
+
         Ticket resultOfGettingById = ticketCrud.find(id);
         LogUtil.printInfo("Result of getting ticket by id is: " + resultOfGettingById);
         return resultOfGettingById;
@@ -56,19 +61,41 @@ public class TicketServiceImpl implements TicketService {
     public boolean update(Ticket ticket, long id) {
         boolean resultOfUpdating = false;
 
-        if (ticket != null) {
-            resultOfUpdating = ticketCrud.update(ticket, id);
-            TicketIdentityUtil.decrementId();
+        if (ticket == null) {
+            LogUtil.printInfo("Ticket object is null");
+            return resultOfUpdating;
         }
 
+        if (!checkValidId(ticket.getId())) {
+            return resultOfUpdating;
+        }
+
+        ticket.setId(id);
+        resultOfUpdating = ticketCrud.update(ticket);
+        TicketIdentityUtil.decrementId();
         LogUtil.printInfo("Result of updating ticket is: " + resultOfUpdating);
         return resultOfUpdating;
     }
 
     @Override
     public boolean delete(long id) {
-        boolean resultOfDeleting = ticketCrud.delete(id);
+        boolean resultOfDeleting = false;
+
+        if (!checkValidId(id)) {
+            return resultOfDeleting;
+        }
+
+         resultOfDeleting = ticketCrud.delete(id);
         LogUtil.printInfo("Result of updating ticket is: " + resultOfDeleting);
         return resultOfDeleting;
+    }
+
+    private boolean checkValidId(long id) {
+        if (id < 1 || id > ticketCrud.getRepository().size()) {
+            LogUtil.printInfo("Incorrect user id: " + id);
+            return false;
+        }
+
+        return true;
     }
 }

@@ -100,7 +100,7 @@ public class TestTicketRepositoryImpl {
     @MethodSource("testUpdate")
     @Tag("Test update")
     public void update(Ticket ticket, long id, boolean expected) {
-        boolean actual = ticketRepository.update(ticket, id);
+        boolean actual = ticketRepository.update(ticket);
         if (actual) {
             actual = ticketRepository.find(id).equals(ticket);
         }

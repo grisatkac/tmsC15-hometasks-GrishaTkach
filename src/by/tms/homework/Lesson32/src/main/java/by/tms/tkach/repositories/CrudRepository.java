@@ -10,7 +10,7 @@ public interface CrudRepository<T> {
 
     List<T> findAll();
 
-    boolean update(T entity, long id);
+    boolean update(T entity);
 
     boolean delete(long id);
 }

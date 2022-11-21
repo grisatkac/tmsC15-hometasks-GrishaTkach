@@ -1,17 +1,13 @@
 package by.tms.tkach.entities.user;
 
 import lombok.*;
-import java.io.Serial;
-import java.io.Serializable;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 @Builder
-public class User extends UserIdentity implements Serializable, Workable, Cloneable {
+public class User extends UserIdentity implements Workable, Cloneable {
 
-    @Serial
-    private static final long serialVersionUID = 6663698300936958977L;
     private static final int maxAmountOfTickets = 5;
     private String name;
     private String surname;

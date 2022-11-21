@@ -5,16 +5,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import java.io.Serial;
-import java.io.Serializable;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 @Builder
-public class Ticket extends TicketIdentity implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 5116469107617062955L;
+public class Ticket extends TicketIdentity {
+
     private String title;
     private String description;
     private StatusType status;

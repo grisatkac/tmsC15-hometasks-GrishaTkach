@@ -4,6 +4,8 @@ import java.util.List;
 
 public interface Service<T> {
 
+    boolean create(T entity);
+
     T getById(long id);
 
     List<T> getAll();

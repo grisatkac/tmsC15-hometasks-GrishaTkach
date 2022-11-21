@@ -14,22 +14,19 @@ public class TicketServiceImpl implements TicketService {
     private final TicketRepositoryImpl ticketRepository = new TicketRepositoryImpl();
 
     @Override
-    public boolean create(String title, String description, StatusType status, User owner, User executor) {
+    public boolean create(Ticket ticket) {
         boolean isTicketAdded = false;
 
-        if (title == null ||description == null) {
+        if (ticket.getTitle() == null ||ticket.getDescription() == null) {
             LogUtil.printInfo("Required parameters of ticket is null");
             return isTicketAdded;
         }
 
-        if (title.isEmpty() || description.isEmpty()) {
+        if (ticket.getTitle().isEmpty() || ticket.getDescription().isEmpty()) {
             LogUtil.printInfo("Required parameters of ticket is empty");
             return isTicketAdded;
         }
 
-        Ticket ticket = Ticket.builder()
-                .title(title).description(description).status(status).owner(owner).executor(executor)
-                .build();
         isTicketAdded = ticketRepository.add(ticket);
         LogUtil.printInfo("Result of adding new ticket is: " + isTicketAdded);
         return isTicketAdded;

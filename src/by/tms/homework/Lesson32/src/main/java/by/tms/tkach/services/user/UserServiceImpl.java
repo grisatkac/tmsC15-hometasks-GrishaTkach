@@ -11,17 +11,21 @@ public class UserServiceImpl implements UserService {
     private final UserRepositoryImpl userRepository = new UserRepositoryImpl();
 
     @Override
-    public boolean create(String name, String surname, String email, String login, String password, boolean canDoJob) {
-        boolean isValidParams = checkValidParams(name, surname, email, login, password);
+    public boolean create(User user) {
+        boolean isValidParams = checkValidParams(
+                user.getName(),
+                user.getSurname(),
+                user.getEmail(),
+                user.getLogin(),
+                user.getPassword()
+        );
         boolean isUserAdded = false;
 
         if (!isValidParams) {
             return isUserAdded;
         }
 
-        User user = User.builder()
-                .name(name).surname(surname).email(email).login(login).password(password).canDoJob(canDoJob)
-                .build();
+
         isUserAdded = userRepository.add(user);
         LogUtil.printInfo("Result of adding new ticket is: " + isUserAdded);
         return isUserAdded;

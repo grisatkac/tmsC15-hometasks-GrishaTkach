@@ -92,7 +92,7 @@ public class TestTicketServiceImpl {
     @ParameterizedTest
     @MethodSource("testCreate")
     public void createTest(String title, String description, StatusType status, User owner, User executor, boolean expected) {
-        boolean actual = ticketService.create(title, description, status, owner, executor);
+        boolean actual = ticketService.create(new Ticket(title, description, status, owner, executor));
         assertEquals(expected, actual);
     }
 

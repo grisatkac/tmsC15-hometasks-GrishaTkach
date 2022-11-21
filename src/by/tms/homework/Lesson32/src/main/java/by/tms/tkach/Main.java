@@ -20,7 +20,6 @@ public class Main {
         getTicketById(ticketService, 2L);
         updateTicket(ticketService);
         deleteTicketById(ticketService);
-
     }
 
     public static void addNewUser(UserServiceImpl userService) {
@@ -30,6 +29,15 @@ public class Main {
         String login = "newLogin";
         String password = "newPassword";
         boolean canDoJob = true;
+
+        User user = User.builder()
+                .name(name)
+                .surname(surname)
+                .email(email)
+                .login(login)
+                .password(password)
+                .canDoJob(canDoJob)
+                .build();
 
         userService.create(name, surname, email, login, password, canDoJob);
     }

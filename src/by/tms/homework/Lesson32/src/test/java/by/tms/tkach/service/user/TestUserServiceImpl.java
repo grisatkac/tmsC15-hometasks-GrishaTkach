@@ -76,7 +76,7 @@ public class TestUserServiceImpl {
     @MethodSource("testCreate")
     @Tag("Test create")
     public void create(String name, String surname, String email, String login, String password, boolean canDoJob, boolean expected) {
-        boolean actual = userService.create(name, surname, email, login, password, canDoJob);
+        boolean actual = userService.create(new User(name, surname, email, login, password, canDoJob));
         assertEquals(expected, actual);
     }
 

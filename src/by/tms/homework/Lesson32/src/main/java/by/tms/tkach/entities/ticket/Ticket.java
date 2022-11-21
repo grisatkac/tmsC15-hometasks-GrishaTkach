@@ -1,17 +1,15 @@
 package by.tms.tkach.entities.ticket;
 
 import by.tms.tkach.entities.user.User;
+import by.tms.tkach.utils.identity.TicketIdentityUtil;
 import lombok.Builder;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
-@ToString(callSuper = true)
 @Builder
-public class Ticket extends TicketIdentity {
+public class Ticket {
 
+    private long id;
     private String title;
     private String description;
     private StatusType status;
@@ -19,7 +17,7 @@ public class Ticket extends TicketIdentity {
     private User executor;
 
     public Ticket(String title, String description, StatusType status, User owner, User executor) {
-        super();
+        this.id = TicketIdentityUtil.generateId();
         this.title = title;
         this.description = description;
         this.status = status;

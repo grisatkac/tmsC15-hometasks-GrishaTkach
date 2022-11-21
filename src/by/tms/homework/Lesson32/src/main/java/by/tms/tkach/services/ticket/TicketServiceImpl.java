@@ -11,7 +11,7 @@ import java.util.List;
 
 public class TicketServiceImpl implements TicketService {
 
-    private final TicketRepositoryImpl ticketCrud = new TicketRepositoryImpl();
+    private final TicketRepositoryImpl ticketRepository = new TicketRepositoryImpl();
 
     @Override
     public boolean create(String title, String description, StatusType status, User owner, User executor) {
@@ -30,7 +30,7 @@ public class TicketServiceImpl implements TicketService {
         Ticket ticket = Ticket.builder()
                 .title(title).description(description).status(status).owner(owner).executor(executor)
                 .build();
-        isTicketAdded = ticketCrud.add(ticket);
+        isTicketAdded = ticketRepository.add(ticket);
         LogUtil.printInfo("Result of adding new ticket is: " + isTicketAdded);
         return isTicketAdded;
     }
@@ -47,14 +47,14 @@ public class TicketServiceImpl implements TicketService {
             return null;
         }
 
-        Ticket resultOfGettingById = ticketCrud.find(id);
+        Ticket resultOfGettingById = ticketRepository.find(id);
         LogUtil.printInfo("Result of getting ticket by id is: " + resultOfGettingById);
         return resultOfGettingById;
     }
 
     @Override
     public List<Ticket> getAll() {
-        return ticketCrud.findAll();
+        return ticketRepository.findAll();
     }
 
     @Override
@@ -71,7 +71,7 @@ public class TicketServiceImpl implements TicketService {
         }
 
         ticket.setId(id);
-        resultOfUpdating = ticketCrud.update(ticket);
+        resultOfUpdating = ticketRepository.update(ticket);
         TicketIdentityUtil.decrementId();
         LogUtil.printInfo("Result of updating ticket is: " + resultOfUpdating);
         return resultOfUpdating;
@@ -85,13 +85,13 @@ public class TicketServiceImpl implements TicketService {
             return resultOfDeleting;
         }
 
-         resultOfDeleting = ticketCrud.delete(id);
+         resultOfDeleting = ticketRepository.delete(id);
         LogUtil.printInfo("Result of updating ticket is: " + resultOfDeleting);
         return resultOfDeleting;
     }
 
     private boolean checkValidId(long id) {
-        if (id < 1 || id > ticketCrud.getRepository().size()) {
+        if (id < 1 || id > ticketRepository.getRepository().size()) {
             LogUtil.printInfo("Incorrect user id: " + id);
             return false;
         }

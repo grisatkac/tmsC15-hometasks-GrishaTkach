@@ -3,7 +3,6 @@ package by.tms.tkach.services.user;
 import by.tms.tkach.entities.user.User;
 import by.tms.tkach.repositories.user.UserRepositoryImpl;
 import by.tms.tkach.utils.log.LogUtil;
-
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
@@ -38,10 +37,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean update(User user, long id) {
+    public boolean update(User user) {
         boolean resultOfUpdating = false;
         if (user != null) {
-            resultOfUpdating = userRepository.update(user, id);
+            resultOfUpdating = userRepository.update(user, user.getId());
         }
         LogUtil.printInfo("Result of updating ticket is: " + resultOfUpdating);
         return resultOfUpdating;

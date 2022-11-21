@@ -107,7 +107,7 @@ public class TestTicketServiceImpl {
     @ParameterizedTest
     @MethodSource("updateTest")
     public void testUpdate(Ticket receiveTicket, long id, boolean expected) {
-        boolean actual = ticketService.update(receiveTicket, id);
+        boolean actual = ticketService.update(receiveTicket);
         assertEquals(expected, actual);
     }
 

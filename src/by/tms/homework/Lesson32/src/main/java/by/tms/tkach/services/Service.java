@@ -10,7 +10,7 @@ public interface Service<T> {
 
     List<T> getAll();
 
-    boolean update(T entity, long id);
+    boolean update(T entity);
 
     boolean delete (long id);
 }

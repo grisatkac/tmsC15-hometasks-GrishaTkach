@@ -39,7 +39,7 @@ public class Main {
                 .canDoJob(canDoJob)
                 .build();
 
-        userService.create(name, surname, email, login, password, canDoJob);
+        userService.create(user);
     }
 
     public static void getAllUsers(UserServiceImpl userService) {
@@ -71,7 +71,7 @@ public class Main {
                 .canDoJob(canDoJob)
                 .build();
         user.setId(id);
-        userService.update(user, id);
+        userService.update(user);
     }
 
     public static void deleteUserById(UserServiceImpl userService) {
@@ -85,7 +85,14 @@ public class Main {
         StatusType status = StatusType.IN_PROGRESS;
         User owner = null;
         User executor = null;
-        ticketService.create(title, description, status, owner, executor);
+        Ticket ticket = Ticket.builder()
+                .title(title)
+                .description(description)
+                .status(status)
+                .owner(owner)
+                .executor(executor)
+                .build();
+        ticketService.create(ticket);
     }
 
     public static void getAllTickets(TicketServiceImpl ticketService) {
@@ -115,7 +122,7 @@ public class Main {
                 .executor(executor)
                 .build();
         ticket.setId(id);
-        ticketService.update(ticket, id);
+        ticketService.update(ticket);
     }
 
     public static void deleteTicketById(TicketServiceImpl ticketService) {

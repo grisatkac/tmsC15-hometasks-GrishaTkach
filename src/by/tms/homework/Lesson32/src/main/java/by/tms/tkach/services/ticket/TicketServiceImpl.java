@@ -2,7 +2,6 @@ package by.tms.tkach.services.ticket;
 
 import by.tms.tkach.entities.ticket.StatusType;
 import by.tms.tkach.entities.ticket.Ticket;
-import by.tms.tkach.entities.user.User;
 import by.tms.tkach.repositories.ticket.TicketRepositoryImpl;
 import by.tms.tkach.utils.identity.TicketIdentityUtil;
 import by.tms.tkach.utils.log.LogUtil;
@@ -55,7 +54,7 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public boolean update(Ticket ticket, long id) {
+    public boolean update(Ticket ticket) {
         boolean resultOfUpdating = false;
 
         if (ticket == null) {
@@ -67,7 +66,7 @@ public class TicketServiceImpl implements TicketService {
             return resultOfUpdating;
         }
 
-        ticket.setId(id);
+        ticket.setId(ticket.getId());
         resultOfUpdating = ticketRepository.update(ticket);
         TicketIdentityUtil.decrementId();
         LogUtil.printInfo("Result of updating ticket is: " + resultOfUpdating);

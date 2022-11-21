@@ -113,7 +113,7 @@ public class TestUserServiceImpl {
     @ParameterizedTest
     @MethodSource("updateTest")
     public void testUpdate(User receiveUser, long id, boolean expected) {
-        boolean actual = userService.update(receiveUser, id);
+        boolean actual = userService.update(receiveUser);
         assertEquals(expected, actual);
     }
 

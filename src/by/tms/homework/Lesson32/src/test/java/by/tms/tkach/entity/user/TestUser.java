@@ -25,23 +25,23 @@ public class TestUser {
     @Tag("Test CanDoWork")
     public void testCanDoWork() {
         boolean expected = true;
-        assertEquals(expected, user2.canDoWork());
+        assertEquals(expected, user2.isCanDoJob());
     }
 
     @Test
     @Tag("Test MakeUserCanDoJob")
     public void testMakeUserCanDoJob() {
         boolean expected = true;
-        user1.makeUserCanDoJob();
-        assertEquals(expected, user1.canDoWork());
+        user1.setCanDoJob(true);
+        assertEquals(expected, user1.isCanDoJob());
     }
 
     @Test
     @Tag("Test MakeUserNotCanDoJob")
     public void testMakeUserNotCanDoJob() {
         boolean expected = false;
-        user1.makeUserNotCanDoJob();
-        assertEquals(expected, user1.canDoWork());
+        user1.setCanDoJob(false);
+        assertEquals(expected, user1.isCanDoJob());
     }
 
     @Test

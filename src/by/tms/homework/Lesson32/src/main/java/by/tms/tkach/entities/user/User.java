@@ -5,7 +5,7 @@ import lombok.*;
 
 @Data
 @Builder
-public class User implements Workable, Cloneable {
+public class User implements  Cloneable {
 
     private static final int maxAmountOfTickets = 5;
     private long id;
@@ -29,19 +29,5 @@ public class User implements Workable, Cloneable {
     @Override
     public User clone() throws CloneNotSupportedException {
         return (User) super.clone();
-    }
-
-    public boolean canDoWork() {
-        return canDoJob;
-    }
-
-    @Override
-    public void makeUserCanDoJob() {
-        this.canDoJob = true;
-    }
-
-    @Override
-    public void makeUserNotCanDoJob() {
-        this.canDoJob = false;
     }
 }

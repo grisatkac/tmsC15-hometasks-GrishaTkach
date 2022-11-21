@@ -1,6 +1,6 @@
 package by.tms.tkach.services.ticket;
 
-import by.tms.tkach.entities.ticket.STATUS_TYPE;
+import by.tms.tkach.entities.ticket.StatusType;
 import by.tms.tkach.entities.ticket.Ticket;
 import by.tms.tkach.entities.user.User;
 import by.tms.tkach.repositories.ticket.TicketRepositoryImpl;
@@ -14,7 +14,7 @@ public class TicketServiceImpl implements TicketService {
     private final TicketRepositoryImpl ticketCrud = new TicketRepositoryImpl();
 
     @Override
-    public boolean create(String title, String description, STATUS_TYPE status, User owner, User executor) {
+    public boolean create(String title, String description, StatusType status, User owner, User executor) {
         boolean isTicketAdded = false;
 
         if (title == null ||description == null) {

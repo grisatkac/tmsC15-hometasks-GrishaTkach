@@ -1,6 +1,6 @@
 package by.tms.tkach;
 
-import by.tms.tkach.entities.ticket.STATUS_TYPE;
+import by.tms.tkach.entities.ticket.StatusType;
 import by.tms.tkach.entities.ticket.Ticket;
 import by.tms.tkach.entities.user.User;
 import by.tms.tkach.services.ticket.TicketServiceImpl;
@@ -74,7 +74,7 @@ public class Main {
     public static void addNewTicket(TicketServiceImpl ticketService) {
         String title = "newTitle";
         String description = "newDescription";
-        STATUS_TYPE status = STATUS_TYPE.IN_PROGRESS;
+        StatusType status = StatusType.IN_PROGRESS;
         User owner = null;
         User executor = null;
         ticketService.create(title, description, status, owner, executor);
@@ -94,7 +94,7 @@ public class Main {
         long id = 2;
         String title = "updatedTitle";
         String description = "updatedDescription";
-        STATUS_TYPE status = STATUS_TYPE.IN_PROGRESS;
+        StatusType status = StatusType.IN_PROGRESS;
         User owner = null;
         User executor = null;
 

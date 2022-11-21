@@ -1,6 +1,6 @@
 package by.tms.tkach.entities.ticket;
 
-public enum STATUS_TYPE {
+public enum StatusType {
 
     PENDING("PENDING"),
     IN_PROGRESS("IN_PROGRESS"),
@@ -8,7 +8,7 @@ public enum STATUS_TYPE {
 
     private final String value;
 
-    STATUS_TYPE(String value) {
+    StatusType(String value) {
         this.value = value;
     }
 }

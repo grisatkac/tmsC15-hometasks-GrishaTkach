@@ -5,15 +5,15 @@ import lombok.ToString;
 @ToString
 public class IdentityUtils {
 
-    public static long user_id = 1L;
+    public static long userId = 1L;
 
     public IdentityUtils() {}
 
     public static long generateUserId() {
-        return user_id++;
+        return userId++;
     }
 
     public static void decrementUserIdCount() {
-        user_id--;
+        userId--;
     }
 }

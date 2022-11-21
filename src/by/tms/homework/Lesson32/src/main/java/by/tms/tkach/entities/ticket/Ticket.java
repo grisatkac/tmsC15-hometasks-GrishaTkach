@@ -17,11 +17,11 @@ public class Ticket extends TicketIdentity implements Serializable, Status {
     private static final long serialVersionUID = 5116469107617062955L;
     private String title;
     private String description;
-    private STATUS_TYPE status;
+    private StatusType status;
     private User owner;
     private User executor;
 
-    public Ticket(String title, String description, STATUS_TYPE status, User owner, User executor) {
+    public Ticket(String title, String description, StatusType status, User owner, User executor) {
         super();
         this.title = title;
         this.description = description;
@@ -32,16 +32,16 @@ public class Ticket extends TicketIdentity implements Serializable, Status {
 
     @Override
     public void makeTicketPending() {
-        this.status = STATUS_TYPE.PENDING;
+        this.status = StatusType.PENDING;
     }
 
     @Override
     public void makeTicketInProgress() {
-        this.status = STATUS_TYPE.IN_PROGRESS;
+        this.status = StatusType.IN_PROGRESS;
     }
 
     @Override
     public void makeTicketCompleted() {
-        this.status = STATUS_TYPE.COMPLETED;
+        this.status = StatusType.COMPLETED;
     }
 }

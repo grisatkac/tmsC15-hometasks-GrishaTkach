@@ -12,13 +12,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean create(User user) {
-        boolean isValidParams = checkValidParams(
-                user.getName(),
-                user.getSurname(),
-                user.getEmail(),
-                user.getLogin(),
-                user.getPassword()
-        );
+        boolean isValidParams = checkValidParams(user);
         boolean isUserAdded = false;
 
         if (!isValidParams) {
@@ -60,13 +54,15 @@ public class UserServiceImpl implements UserService {
         return resultOfDeleting;
     }
 
-    private boolean checkValidParams(String name, String surname, String email, String login, String password) {
-        if (name == null || surname == null || email == null || login == null || password == null) {
+    private boolean checkValidParams(User user) {
+        if (user.getName() == null || user.getSurname() == null || user.getEmail() == null ||
+                user.getLogin() == null || user.getPassword() == null) {
             LogUtil.printInfo("Required parameters of user is null");
             return false;
         }
 
-        if (name.isEmpty() || surname.isEmpty() || email.isEmpty() || login.isEmpty() || password.isEmpty()) {
+        if (user.getName().isEmpty() || user.getSurname().isEmpty() || user.getEmail().isEmpty() ||
+                user.getLogin().isEmpty() || user.getPassword().isEmpty()) {
             LogUtil.printInfo("Required parameters of user is empty");
             return false;
         }

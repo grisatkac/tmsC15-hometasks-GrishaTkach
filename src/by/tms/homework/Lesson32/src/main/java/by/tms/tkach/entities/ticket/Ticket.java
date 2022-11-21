@@ -12,7 +12,7 @@ import java.io.Serializable;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 @Builder
-public class Ticket extends TicketIdentity implements Serializable, Status {
+public class Ticket extends TicketIdentity implements Serializable {
     @Serial
     private static final long serialVersionUID = 5116469107617062955L;
     private String title;
@@ -28,20 +28,5 @@ public class Ticket extends TicketIdentity implements Serializable, Status {
         this.status = status;
         this.owner = owner;
         this.executor = executor;
-    }
-
-    @Override
-    public void makeTicketPending() {
-        this.status = StatusType.PENDING;
-    }
-
-    @Override
-    public void makeTicketInProgress() {
-        this.status = StatusType.IN_PROGRESS;
-    }
-
-    @Override
-    public void makeTicketCompleted() {
-        this.status = StatusType.COMPLETED;
     }
 }

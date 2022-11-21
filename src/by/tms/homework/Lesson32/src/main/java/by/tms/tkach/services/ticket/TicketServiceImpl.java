@@ -36,6 +36,11 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
+    public void setStatus(Ticket ticket, StatusType statusType) {
+        ticket.setStatus(statusType);
+    }
+
+    @Override
     public Ticket getById(long id) {
         Ticket resultOfGettingById = ticketCrud.find(id);
         LogUtil.printInfo("Result of getting ticket by id is: " + resultOfGettingById);

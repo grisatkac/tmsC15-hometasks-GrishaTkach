@@ -1,23 +1,22 @@
 package by.tms.tkach.repositories.ticket;
 
+import by.tms.tkach.entities.ticket.StatusType;
 import by.tms.tkach.entities.ticket.Ticket;
-import by.tms.tkach.entities.user.User;
-import by.tms.tkach.repositories.CrudRepository;
 import by.tms.tkach.utils.identity.TicketIdentityUtil;
 import by.tms.tkach.utils.log.LogUtil;
-
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
-public class TicketRepositoryImpl implements Serializable, CrudRepository<Ticket> {
+public class TicketRepositoryImpl implements Serializable, TicketRepository {
 
     @Serial
     private static final long serialVersionUID = 6306550843968050101L;
-    private static final Map<Long, Ticket> TICKET_REPOSITORY = TicketRepository.getTICKET_REPOSITORY();
+    private final Map<Long, Ticket> TICKET_REPOSITORY = new HashMap<>();
+
+    {
+        generateTickets();
+    }
 
     @Override
     public boolean add(Ticket ticket) {
@@ -99,5 +98,39 @@ public class TicketRepositoryImpl implements Serializable, CrudRepository<Ticket
         }
 
         return true;
+    }
+
+    public Map<Long, Ticket> getTICKET_REPOSITORY() {
+        return TICKET_REPOSITORY;
+    }
+
+    public void generateTickets(){
+        Ticket ticket1 = Ticket.builder()
+                .title("title1")
+                .description("description1")
+                .status(StatusType.IN_PROGRESS)
+                .owner(null)
+                .executor(null)
+                .build();
+
+        Ticket ticket2 = Ticket.builder()
+                .title("title2")
+                .description("description2")
+                .status(StatusType.PENDING)
+                .owner(null)
+                .executor(null)
+                .build();
+
+        Ticket ticket3 = Ticket.builder()
+                .title("title3")
+                .description("description3")
+                .status(StatusType.COMPLETED)
+                .owner(null)
+                .executor(null)
+                .build();
+
+        TICKET_REPOSITORY.put(ticket1.getId(), ticket1);
+        TICKET_REPOSITORY.put(ticket2.getId(), ticket2);
+        TICKET_REPOSITORY.put(ticket3.getId(), ticket3);
     }
 }

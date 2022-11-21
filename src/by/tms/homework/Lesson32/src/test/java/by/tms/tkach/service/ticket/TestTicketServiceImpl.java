@@ -1,6 +1,6 @@
 package by.tms.tkach.service.ticket;
 
-import by.tms.tkach.entities.ticket.STATUS_TYPE;
+import by.tms.tkach.entities.ticket.StatusType;
 import by.tms.tkach.entities.ticket.Ticket;
 import by.tms.tkach.entities.user.User;
 import by.tms.tkach.services.ticket.TicketServiceImpl;
@@ -23,14 +23,14 @@ public class TestTicketServiceImpl {
         ticket = Ticket.builder()
                 .title("title1")
                 .description("description1")
-                .status(STATUS_TYPE.IN_PROGRESS)
+                .status(StatusType.IN_PROGRESS)
                 .owner(null)
                 .executor(null)
                 .build();
         ticketForUpdate = Ticket.builder()
                 .title("title1")
                 .description("description1")
-                .status(STATUS_TYPE.IN_PROGRESS)
+                .status(StatusType.IN_PROGRESS)
                 .owner(null)
                 .executor(null)
                 .build();
@@ -91,7 +91,7 @@ public class TestTicketServiceImpl {
 
     @ParameterizedTest
     @MethodSource("testCreate")
-    public void createTest(String title, String description, STATUS_TYPE status, User owner, User executor, boolean expected) {
+    public void createTest(String title, String description, StatusType status, User owner, User executor, boolean expected) {
         boolean actual = ticketService.create(title, description, status, owner, executor);
         assertEquals(expected, actual);
     }

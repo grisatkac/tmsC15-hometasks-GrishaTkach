@@ -2,15 +2,15 @@ package by.tms.tkach.utils.identity;
 
 public class TicketIdentityUtil {
 
-    public static long ticket_id = 1L;
+    public static long ticketId = 1L;
 
     public TicketIdentityUtil() {};
 
     public static long generateId() {
-        return ticket_id++;
+        return ticketId++;
     }
 
     public static void decrementId() {
-        ticket_id--;
+        ticketId--;
     }
 }

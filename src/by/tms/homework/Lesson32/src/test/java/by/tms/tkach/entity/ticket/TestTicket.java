@@ -1,6 +1,6 @@
 package by.tms.tkach.entity.ticket;
 
-import by.tms.tkach.entities.ticket.STATUS_TYPE;
+import by.tms.tkach.entities.ticket.StatusType;
 import by.tms.tkach.entities.ticket.Ticket;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Tag;
@@ -16,7 +16,7 @@ public class TestTicket {
         ticket = Ticket.builder()
                 .title("title1")
                 .description("description1")
-                .status(STATUS_TYPE.IN_PROGRESS)
+                .status(StatusType.IN_PROGRESS)
                 .owner(null)
                 .executor(null)
                 .build();
@@ -25,7 +25,7 @@ public class TestTicket {
     @Test
     @Tag("Test makeTicketPending")
     public void makeTicketPending() {
-        STATUS_TYPE expected = STATUS_TYPE.PENDING;
+        StatusType expected = StatusType.PENDING;
         ticket.makeTicketPending();
         assertEquals(expected, ticket.getStatus());
     }
@@ -33,7 +33,7 @@ public class TestTicket {
     @Test
     @Tag("Test makeTicketPending")
     public void makeTicketInProgress() {
-        STATUS_TYPE expected = STATUS_TYPE.IN_PROGRESS;
+        StatusType expected = StatusType.IN_PROGRESS;
         ticket.makeTicketInProgress();
         assertEquals(expected, ticket.getStatus());
     }
@@ -41,7 +41,7 @@ public class TestTicket {
     @Test
     @Tag("Test makeTicketPending")
     public void makeTicketCompleted() {
-        STATUS_TYPE expected = STATUS_TYPE.COMPLETED;
+        StatusType expected = StatusType.COMPLETED;
         ticket.makeTicketCompleted();
         assertEquals(expected, ticket.getStatus());
     }

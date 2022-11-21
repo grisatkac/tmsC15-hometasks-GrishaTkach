@@ -1,6 +1,6 @@
 package by.tms.tkach.repository.ticket;
 
-import by.tms.tkach.entities.ticket.STATUS_TYPE;
+import by.tms.tkach.entities.ticket.StatusType;
 import by.tms.tkach.entities.ticket.Ticket;
 import by.tms.tkach.repositories.ticket.TicketRepository;
 import by.tms.tkach.repositories.ticket.TicketRepositoryImpl;
@@ -27,7 +27,7 @@ public class TestTicketRepositoryImpl {
         ticket = Ticket.builder()
                 .title("title1")
                 .description("description1")
-                .status(STATUS_TYPE.IN_PROGRESS)
+                .status(StatusType.IN_PROGRESS)
                 .owner(null)
                 .executor(null)
                 .build();

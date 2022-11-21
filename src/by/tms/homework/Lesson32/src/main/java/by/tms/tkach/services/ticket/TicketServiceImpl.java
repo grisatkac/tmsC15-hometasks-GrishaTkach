@@ -86,7 +86,7 @@ public class TicketServiceImpl implements TicketService {
         }
 
          resultOfDeleting = ticketRepository.delete(id);
-        LogUtil.printInfo("Result of updating ticket is: " + resultOfDeleting);
+        LogUtil.printInfo("Result of deleting ticket is: " + resultOfDeleting);
         return resultOfDeleting;
     }
 

@@ -1,7 +1,6 @@
 package by.tms.tkach.repositories.user;
 
 import by.tms.tkach.entities.user.User;
-import by.tms.tkach.repositories.CrudRepository;
 import by.tms.tkach.utils.identity.IdentityUtils;
 import by.tms.tkach.utils.log.LogUtil;
 import lombok.Data;
@@ -10,11 +9,15 @@ import java.io.Serializable;
 import java.util.*;
 
 @Data
-public class UserRepositoryImpl implements Serializable, CrudRepository<User> {
+public class UserRepositoryImpl implements Serializable, UserRepository {
 
     @Serial
     private static final long serialVersionUID = 4323127552174745439L;
-    private static final Map<Long, User> USER_REPOSITORY = UserRepository.getUSER_REPOSITORY();
+    private static final Map<Long, User> USER_REPOSITORY = new HashMap<>();
+
+    {
+        generateEntitiesForRepository();
+    }
 
     @Override
     public boolean add(User user) {
@@ -97,5 +100,44 @@ public class UserRepositoryImpl implements Serializable, CrudRepository<User> {
         }
 
         return true;
+    }
+
+    @Override
+    public void generateEntitiesForRepository() {
+        User user1 = User.builder()
+                .name("name1")
+                .surname("surname1")
+                .email("user1@gmail.com")
+                .login("login1")
+                .password("password1")
+                .canDoJob(true)
+                .build();
+
+        User user2 = User.builder()
+                .name("name2")
+                .surname("surname2")
+                .email("user2@gmail.com")
+                .login("login2")
+                .password("password2")
+                .canDoJob(true)
+                .build();
+
+        User user3 = User.builder()
+                .name("name3")
+                .surname("surname3")
+                .email("user3@gmail.com")
+                .login("login3")
+                .password("password3")
+                .canDoJob(true)
+                .build();
+
+        USER_REPOSITORY.put(user1.getId(), user1);
+        USER_REPOSITORY.put(user2.getId(), user2);
+        USER_REPOSITORY.put(user3.getId(), user3);
+    }
+
+    @Override
+    public Map<Long, User> getRepository() {
+        return USER_REPOSITORY;
     }
 }

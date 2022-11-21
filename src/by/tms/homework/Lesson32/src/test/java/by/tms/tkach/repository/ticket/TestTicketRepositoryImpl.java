@@ -2,7 +2,6 @@ package by.tms.tkach.repository.ticket;
 
 import by.tms.tkach.entities.ticket.StatusType;
 import by.tms.tkach.entities.ticket.Ticket;
-import by.tms.tkach.repositories.ticket.TicketRepository;
 import by.tms.tkach.repositories.ticket.TicketRepositoryImpl;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Tag;
@@ -84,7 +83,7 @@ public class TestTicketRepositoryImpl {
     public void findAll() {
         boolean expected = true;
         List<Ticket> ticketList = ticketRepository.findAll();
-        List<Ticket> newList = new ArrayList<>(TicketRepository.getTICKET_REPOSITORY().values());
+        List<Ticket> newList = new ArrayList<>(ticketRepository.getRepository().values());
         boolean actual = ticketList.equals(newList);
         assertEquals(expected, actual);
     }

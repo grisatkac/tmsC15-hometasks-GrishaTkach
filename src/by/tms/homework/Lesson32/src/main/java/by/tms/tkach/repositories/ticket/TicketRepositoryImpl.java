@@ -15,7 +15,7 @@ public class TicketRepositoryImpl implements Serializable, TicketRepository {
     private final Map<Long, Ticket> TICKET_REPOSITORY = new HashMap<>();
 
     {
-        generateTickets();
+        generateEntitiesForRepository();
     }
 
     @Override
@@ -100,11 +100,8 @@ public class TicketRepositoryImpl implements Serializable, TicketRepository {
         return true;
     }
 
-    public Map<Long, Ticket> getTICKET_REPOSITORY() {
-        return TICKET_REPOSITORY;
-    }
-
-    public void generateTickets(){
+    @Override
+    public void generateEntitiesForRepository() {
         Ticket ticket1 = Ticket.builder()
                 .title("title1")
                 .description("description1")
@@ -132,5 +129,10 @@ public class TicketRepositoryImpl implements Serializable, TicketRepository {
         TICKET_REPOSITORY.put(ticket1.getId(), ticket1);
         TICKET_REPOSITORY.put(ticket2.getId(), ticket2);
         TICKET_REPOSITORY.put(ticket3.getId(), ticket3);
+    }
+
+    @Override
+    public Map<Long, Ticket> getRepository() {
+        return TICKET_REPOSITORY;
     }
 }

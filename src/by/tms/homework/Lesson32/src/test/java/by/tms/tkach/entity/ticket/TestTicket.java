@@ -26,7 +26,7 @@ public class TestTicket {
     @Tag("Test makeTicketPending")
     public void makeTicketPending() {
         StatusType expected = StatusType.PENDING;
-        ticket.makeTicketPending();
+        ticket.setStatus(StatusType.PENDING);
         assertEquals(expected, ticket.getStatus());
     }
 
@@ -34,7 +34,7 @@ public class TestTicket {
     @Tag("Test makeTicketPending")
     public void makeTicketInProgress() {
         StatusType expected = StatusType.IN_PROGRESS;
-        ticket.makeTicketInProgress();
+        ticket.setStatus(StatusType.IN_PROGRESS);
         assertEquals(expected, ticket.getStatus());
     }
 
@@ -42,7 +42,7 @@ public class TestTicket {
     @Tag("Test makeTicketPending")
     public void makeTicketCompleted() {
         StatusType expected = StatusType.COMPLETED;
-        ticket.makeTicketCompleted();
+        ticket.setStatus(StatusType.COMPLETED);
         assertEquals(expected, ticket.getStatus());
     }
 }

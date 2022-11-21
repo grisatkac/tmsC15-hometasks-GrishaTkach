@@ -75,7 +75,7 @@ public class TestUserRepository {
     public void findAllTest() {
         boolean expected = true;
         List<User> userList = userRepository.findAll();
-        List<User> newList = new ArrayList<>(UserRepository.getUSER_REPOSITORY().values());
+        List<User> newList = new ArrayList<>(userRepository.getRepository().values());
         boolean actual = userList.equals(newList);
         assertEquals(expected, actual);
     }

@@ -15,11 +15,12 @@ public class AppInitializer implements WebApplicationInitializer {
     @Override
     public void onStartup(ServletContext servletContext) {
         AnnotationConfigWebApplicationContext root = new AnnotationConfigWebApplicationContext();
-        root.scan("by.tms.tkach.lesson40");
+        root.scan("by.tms.tkach.springmvc");
         servletContext.addListener(new ContextLoaderListener(root));
-
+        DispatcherServlet dispatcherServlet = new DispatcherServlet(new GenericWebApplicationContext());
+        dispatcherServlet.setThrowExceptionIfNoHandlerFound(true);
         ServletRegistration.Dynamic appServlet = servletContext.addServlet("appServlet",
-                 new DispatcherServlet(new GenericWebApplicationContext()));
+                dispatcherServlet);
         appServlet.setLoadOnStartup(1);
         appServlet.addMapping("/");
     }

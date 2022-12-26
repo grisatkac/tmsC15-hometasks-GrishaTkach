@@ -19,7 +19,7 @@ public class Interceptor implements HandlerInterceptor {
         log.info(handler.getClass().getSimpleName());
         String requestURI = request.getRequestURI();
         String method = request.getMethod();
-        System.out.println(String.format("[%s]. Request information: url - %s, method - %s", time, requestURI, method));
+        log.debug("[{}]. Request information: url - {}, method - {}", time, requestURI, method);
         return true;
     }
 
@@ -29,6 +29,6 @@ public class Interceptor implements HandlerInterceptor {
         String requestURI = request.getRequestURI();
         String method = request.getMethod();
         int status = response.getStatus();
-        System.out.println(String.format("[%s]. Request information: url - %s, method - %s. Response status - %s ", time, requestURI, method, status));
+        log.debug("[{}]. Request information: url - {}, method - {}. Response status - {}", time, requestURI, method, status);
     }
 }

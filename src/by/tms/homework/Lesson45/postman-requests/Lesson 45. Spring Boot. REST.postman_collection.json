@@ -1,0 +1,155 @@
+{
+	"info": {
+		"_postman_id": "5f01df21-e055-43fe-a117-a9e015e46fd3",
+		"name": "Lesson 45. Spring Boot. REST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13135310"
+	},
+	"item": [
+		{
+			"name": "Student",
+			"item": [
+				{
+					"name": "1. GET all students",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{url}}/rest/students/all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"rest",
+								"students",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. GET student by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/rest/students/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"rest",
+								"students",
+								"{{id}}"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. POST create student",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"new name\",\r\n  \"lastName\": \"new last name\",\r\n  \"number\": 123\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/rest/students",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"rest",
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. POST upload file",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "file",
+							"file": {}
+						},
+						"url": {
+							"raw": "{{url}}/file/upload",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"file",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "upload",
+			"item": [
+				{
+					"name": "1. POST Upload file",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Grisha/Downloads/Lesson 32. Design patterns Java EE.pdf"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/files",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"files"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
